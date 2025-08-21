@@ -7,55 +7,140 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fdfdfd;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fefefe;
       color: #333;
+      overflow-x: hidden;
     }
     header {
-      background: linear-gradient(90deg, #1e3c72, #2a5298); /* blue */
+      background: linear-gradient(120deg, #1e3c72, #2a5298);
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: 80px 20px;
+      animation: fadeIn 2s ease-in-out;
     }
     header h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 3em;
+      letter-spacing: 2px;
     }
     header p {
-      margin: 5px 0 0;
+      margin: 10px 0 0;
       font-size: 1.2em;
     }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes pulse {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.05);}
+      100% {transform: scale(1);}
+    }
+
+    .banner {
+      background: #8B5E3C;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-weight: bold;
+      animation: pulse 3s infinite;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
-      padding: 20px;
+      padding: 30px;
     }
     .gallery img {
       width: 100%;
-      border-radius: 10px;
-      height: 200px;
+      border-radius: 12px;
+      height: 220px;
       object-fit: cover;
-      border: 4px solid #8B5E3C; /* brown */
+      transition: transform 0.4s, box-shadow 0.4s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-    .info, .coming, .contact {
-      padding: 30px 20px;
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .info, .features, .coming, .contact {
+      padding: 40px 20px;
       text-align: center;
+      animation: fadeIn 2s ease-in-out;
     }
-    .info h2, .coming h2, .contact h2 {
+    h2 {
       color: #1e3c72;
       margin-bottom: 15px;
     }
-    .contact p {
-      margin: 5px 0;
-      font-size: 1.1em;
+    .features ul {
+      list-style: none;
+      padding: 0;
     }
+    .features li {
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 4px solid #8B5E3C;
+      display: inline-block;
+      text-align: left;
+      background: #f9f9f9;
+      border-radius: 6px;
+      width: 60%;
+      transition: transform 0.3s;
+    }
+    .features li:hover {
+      transform: translateX(5px);
+    }
+
+    .contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact input, .contact textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    .contact button {
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #1e3c72;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact button:hover {
+      background: #8B5E3C;
+    }
+
     footer {
-      background: #8B5E3C; /* brown */
+      background: #2a5298;
       color: white;
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       font-size: 0.9em;
+    }
+    .social-icons {
+      margin: 10px 0;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.3em;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: gold;
     }
   </style>
 </head>
@@ -64,6 +149,8 @@
     <h1>INSPIRE CAFE, LLC</h1>
     <p>Machines Caffé • ENCINO, CA</p>
   </header>
+
+  <div class="banner">🚀 Our Website is Coming Soon! Stay Tuned!</div>
 
   <section class="gallery">
     <img src="https://i.ytimg.com/vi/SSYTZaIdM9o/maxresdefault.jpg" alt="Coffee shop">
@@ -74,24 +161,47 @@
 
   <section class="info">
     <h2>About Us</h2>
-    <p><strong>INSPIRE CAFE, LLC</strong> is specialized in <b>Modern Coffee Machines</b>.  
-    We provide high-quality café solutions and coffee experiences.</p>
+    <p><strong>INSPIRE CAFE, LLC</strong> specializes in <b>Modern Coffee Machines</b>.  
+    We provide premium café equipment and unique coffee experiences tailored for professionals and enthusiasts alike.</p>
     <p><b>Address:</b> VENTURA BLVD, STE 130, ENCINO, CA 91436</p>
+  </section>
+
+  <section class="features">
+    <h2>Why Choose Our Coffee Machines?</h2>
+    <ul>
+      <li>☕ High-Performance Professional Espresso Machines</li>
+      <li>🌍 Eco-Friendly and Energy Efficient</li>
+      <li>⚡ Fast Brewing Technology</li>
+      <li>🎨 Elegant & Modern Italian Design</li>
+      <li>🛠️ Reliable After-Sales Support & Maintenance</li>
+    </ul>
   </section>
 
   <section class="coming">
     <h2>Coming Soon</h2>
-    <p>Our full website and services will be available soon. Stay tuned for updates!</p>
+    <p>Our full e-commerce website is launching soon with a complete product range.  
+    Stay connected to discover the future of café innovation!</p>
   </section>
 
   <section class="contact">
     <h2>Contact Us</h2>
     <p><b>Email:</b> <a href="mailto:contact@inspirell.shop">contact@inspirell.shop</a></p>
     <p><b>Phone:</b> 13516661594</p>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <footer>
-    &copy; 2025 INSPIRE CAFE, LLC – All Rights Reserved.
+    <p>&copy; 2025 INSPIRE CAFE, LLC – All Rights Reserved.</p>
+    <div class="social-icons">
+      <a href="#">🌐</a>
+      <a href="#">📘</a>
+      <a href="#">📸</a>
+    </div>
   </footer>
 </body>
 </html>
