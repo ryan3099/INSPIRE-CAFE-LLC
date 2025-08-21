@@ -3,205 +3,317 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>INSPIRE CAFE, LLC</title>
+  <title>INSPIRE CAFE, LLC — Machines Caffé</title>
+  <meta name="description" content="INSPIRE CAFE, LLC — Modern coffee machines, installation & support. ENCINO, CA 91436." />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fefefe;
-      color: #333;
-      overflow-x: hidden;
+    :root{
+      --blue1:#1e3c72;
+      --blue2:#2a5298;
+      --brown:#8B5E3C;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --panel:#f6f7fb;
+      --white:#ffffff;
+      --ring: rgba(30,60,114,.25);
+      --max:1200px;
     }
-    header {
-      background: linear-gradient(120deg, #1e3c72, #2a5298);
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
-      animation: fadeIn 2s ease-in-out;
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: system-ui,-apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color:var(--text); background:#fff; line-height:1.6;
     }
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-      letter-spacing: 2px;
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:24px}
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.85); border-bottom:1px solid rgba(0,0,0,.06);
+      backdrop-filter:saturate(180%) blur(10px);
     }
-    header p {
-      margin: 10px 0 0;
-      font-size: 1.2em;
+    .nav-wrap{display:flex; align-items:center; justify-content:space-between}
+    .brand{
+      font-weight:900; letter-spacing:.4px;
+      background:linear-gradient(120deg,var(--blue1),var(--blue2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .menu{display:flex; gap:18px}
+    .menu a{opacity:.85}
+    .menu a:hover{opacity:1}
+
+    /* HERO (twira + zwa9) */
+    .hero{
+      position:relative; height:88vh; overflow:hidden; color:#fff;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      background:linear-gradient(120deg,var(--blue1),var(--blue2));
+    }
+    .hero .texture{
+      position:absolute; inset:-50%;
+      background:
+        radial-gradient(circle, rgba(255,255,255,.15) 10%, transparent 20%) 0 0/220px 220px,
+        radial-gradient(circle, rgba(255,255,255,.10) 10%, transparent 20%) 110px 110px/220px 220px;
+      animation:twira 18s linear infinite;
+      filter: blur(1px);
+    }
+    @keyframes twira{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+    .hero .glow{
+      position:absolute; width:1100px; height:1100px; border-radius:50%;
+      background:radial-gradient(closest-side, rgba(255,255,255,.25), transparent 65%);
+      filter: blur(30px);
+    }
+    .hero-content{position:relative; z-index:2; padding:0 18px; max-width:900px}
+    .title{
+      font-size:clamp(32px,6vw,64px); font-weight:900; margin:0 0 10px;
+      text-shadow:0 2px 12px rgba(0,0,0,.35);
+      animation:glow 2.2s ease-in-out infinite alternate;
+    }
+    @keyframes glow{
+      from{ text-shadow:0 2px 10px rgba(0,0,0,.35), 0 0 6px rgba(255,255,255,.2) }
+      to{   text-shadow:0 2px 16px rgba(0,0,0,.45), 0 0 22px rgba(255,255,255,.45) }
+    }
+    .subtitle{opacity:.95; font-size:clamp(14px,2.2vw,18px); margin:0 0 18px}
+    .tags{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:18px}
+    .tag{
+      font-size:12px; font-weight:700; letter-spacing:.2px;
+      padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35)
+    }
+    .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    .btn{
+      display:inline-block; padding:12px 20px; border-radius:14px; font-weight:800;
+      box-shadow:0 14px 32px var(--ring);
+      transition:transform .2s ease, filter .2s ease, background .2s ease, color .2s ease;
+    }
+    .btn-primary{background:#fff; color:var(--blue1)}
+    .btn-primary:hover{transform:translateY(-2px); filter:brightness(1.02)}
+    .btn-ghost{background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.35)}
+    .btn-ghost:hover{transform:translateY(-2px); background:rgba(255,255,255,.18)}
+
+    /* SECTIONS */
+    section{padding:68px 0}
+    .section-title{
+      font-size:28px; font-weight:900; margin:0 0 6px;
+      background:linear-gradient(120deg,var(--blue1),var(--blue2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .muted{color:var(--muted)}
+
+    /* GALLERY */
+    .gallery{display:grid; gap:18px; grid-template-columns:repeat(2,1fr)}
+    .shot{position:relative; overflow:hidden; border-radius:16px; background:#000}
+    .shot img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02); transition:transform .45s ease, filter .45s ease}
+    .shot:after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient( to bottom, transparent, rgba(0,0,0,.15) 60%, rgba(0,0,0,.25) );
+      opacity:0; transition:opacity .35s ease;
+    }
+    .shot:hover img{transform:scale(1.07)}
+    .shot:hover:after{opacity:1}
+
+    /* FEATURES */
+    .features{background:var(--panel)}
+    .features-list{display:grid; gap:14px; max-width:900px; margin:18px auto 0}
+    .feature{
+      background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:14px 16px;
+      display:flex; gap:10px; align-items:flex-start; box-shadow:0 8px 20px rgba(0,0,0,.04);
+      transform:translateY(8px); opacity:0; transition:transform .6s ease, opacity .6s ease;
+    }
+    .feature.show{transform:none; opacity:1}
+    .dot{flex:0 0 10px; height:10px; border-radius:50%; background:var(--brown); margin-top:7px}
+
+    /* COMING SOON */
+    .coming{
+      text-align:center;
+      background: radial-gradient(700px 420px at 15% -10%, rgba(139,94,60,.18), transparent 60%), #fff;
+      border-top:1px solid #eaeaea; border-bottom:1px solid #eaeaea;
+    }
+    .coming .badge{
+      display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800;
+      background:rgba(139,94,60,.1); color:var(--brown); border:1px solid rgba(139,94,60,.35)
+    }
+    .coming h3{margin:10px 0 6px; font-size:clamp(20px,3.5vw,32px)}
+    .coming p{color:#6b7280}
+    .marquee{
+      margin-top:14px; white-space:nowrap; overflow:hidden; mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .marquee span{
+      display:inline-block; padding:10px 16px; margin-right:18px; border-radius:999px; border:1px dashed rgba(139,94,60,.35);
+      color:var(--brown); background:rgba(139,94,60,.06); animation:slide 16s linear infinite;
+    }
+    @keyframes slide{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+
+    /* CONTACT */
+    .contact-grid{display:grid; gap:18px; grid-template-columns:1.1fr .9fr}
+    .card{background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:18px; box-shadow:0 8px 22px rgba(0,0,0,.05)}
+    .list{list-style:none; padding:0; margin:0}
+    .list li{padding:8px 0; border-bottom:1px dashed #e5e7eb}
+    .btn-send{
+      display:inline-block; margin-top:10px; padding:12px 16px; border-radius:12px; font-weight:800;
+      background:linear-gradient(120deg,var(--blue1),var(--blue2)); color:#fff; border:0;
+      box-shadow:0 12px 28px var(--ring); cursor:pointer;
+      transition:transform .18s ease, filter .18s ease;
+    }
+    .btn-send:hover{transform:translateY(-2px); filter:brightness(1.03)}
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none;
+      background:#fff; color:var(--text); font-size:16px; transition:border .15s ease, box-shadow .15s ease
+    }
+    input:focus, textarea:focus{border-color:rgba(42,82,152,.55); box-shadow:0 0 0 4px rgba(42,82,152,.18)}
+    textarea{min-height:120px; resize:vertical}
+    iframe{width:100%; height:360px; border:0; border-radius:14px}
+
+    /* FOOTER */
+    footer{padding:28px 0; text-align:center; color:#475569; border-top:1px solid #eaeaea}
+    .social{display:flex; gap:12px; justify-content:center; margin-top:6px}
+    .chip{
+      display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800;
+      background:rgba(42,82,152,.08); color:var(--blue1); border:1px solid rgba(42,82,152,.25)
     }
 
-    /* Animation */
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes pulse {
-      0% {transform: scale(1);}
-      50% {transform: scale(1.05);}
-      100% {transform: scale(1);}
-    }
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease}
+    .reveal.show{opacity:1; transform:none}
 
-    .banner {
-      background: #8B5E3C;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      font-weight: bold;
-      animation: pulse 3s infinite;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      padding: 30px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      height: 220px;
-      object-fit: cover;
-      transition: transform 0.4s, box-shadow 0.4s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-
-    .info, .features, .coming, .contact {
-      padding: 40px 20px;
-      text-align: center;
-      animation: fadeIn 2s ease-in-out;
-    }
-    h2 {
-      color: #1e3c72;
-      margin-bottom: 15px;
-    }
-    .features ul {
-      list-style: none;
-      padding: 0;
-    }
-    .features li {
-      margin: 10px 0;
-      padding: 10px;
-      border-left: 4px solid #8B5E3C;
-      display: inline-block;
-      text-align: left;
-      background: #f9f9f9;
-      border-radius: 6px;
-      width: 60%;
-      transition: transform 0.3s;
-    }
-    .features li:hover {
-      transform: translateX(5px);
-    }
-
-    .contact form {
-      max-width: 500px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .contact input, .contact textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1em;
-    }
-    .contact button {
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      background: #1e3c72;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .contact button:hover {
-      background: #8B5E3C;
-    }
-
-    footer {
-      background: #2a5298;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-    }
-    .social-icons {
-      margin: 10px 0;
-    }
-    .social-icons a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-      font-size: 1.3em;
-      transition: color 0.3s;
-    }
-    .social-icons a:hover {
-      color: gold;
+    /* Responsive */
+    @media (max-width: 980px){
+      .gallery{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .menu{display:none}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>INSPIRE CAFE, LLC</h1>
-    <p>Machines Caffé • ENCINO, CA</p>
+
+  <!-- NAV -->
+  <div class="nav" role="navigation" aria-label="Primary">
+    <div class="container nav-wrap">
+      <div class="brand">INSPIRE&nbsp;CAFE, LLC</div>
+      <nav class="menu">
+        <a href="#gallery">Gallery</a>
+        <a href="#features">Features</a>
+        <a href="#coming">Coming</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="texture" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="tags">
+        <span class="tag">Machines Caffé</span>
+        <span class="tag">ENCINO, CA 91436</span>
+      </div>
+      <h1 class="title">Modern Coffee Machines for Inspired Cafés</h1>
+      <p class="subtitle">Premium equipment • Installation • Maintenance • Training</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Contact Us</a>
+        <a class="btn btn-ghost" href="mailto:contact@inspirell.shop" rel="noopener">Email: contact@inspirell.shop</a>
+      </div>
+    </div>
   </header>
 
-  <div class="banner">🚀 Our Website is Coming Soon! Stay Tuned!</div>
-
-  <section class="gallery">
-    <img src="https://i.ytimg.com/vi/SSYTZaIdM9o/maxresdefault.jpg" alt="Coffee shop">
-    <img src="https://www.lingoda.com/blog/wp-content/uploads/2024/04/coffee-in-italy-e1712840477267.jpg" alt="Coffee Italy">
-    <img src="https://cdn.mos.cms.futurecdn.net/kJrLQ2a9wgMX5jaTiUPefi.jpg" alt="Coffee beans">
-    <img src="https://www.coffeeitalia.co.uk/wp-content/uploads/2022/07/Rancilio-Classe-9-2.jpg" alt="Coffee machine">
+  <!-- GALLERY -->
+  <section id="gallery" class="container">
+    <h2 class="section-title reveal">Gallery</h2>
+    <p class="muted reveal">A peek at our machines and coffee aesthetic.</p>
+    <div class="gallery" style="margin-top:18px">
+      <figure class="shot reveal">
+        <img src="https://i.ytimg.com/vi/SSYTZaIdM9o/maxresdefault.jpg" alt="Coffee shop ambience">
+      </figure>
+      <figure class="shot reveal">
+        <img src="https://www.lingoda.com/blog/wp-content/uploads/2024/04/coffee-in-italy-e1712840477267.jpg" alt="Italian coffee culture">
+      </figure>
+      <figure class="shot reveal">
+        <img src="https://cdn.mos.cms.futurecdn.net/kJrLQ2a9wgMX5jaTiUPefi.jpg" alt="Coffee beans close-up">
+      </figure>
+      <figure class="shot reveal">
+        <img src="https://www.coffeeitalia.co.uk/wp-content/uploads/2022/07/Rancilio-Classe-9-2.jpg" alt="Professional espresso machine">
+      </figure>
+    </div>
   </section>
 
-  <section class="info">
-    <h2>About Us</h2>
-    <p><strong>INSPIRE CAFE, LLC</strong> specializes in <b>Modern Coffee Machines</b>.  
-    We provide premium café equipment and unique coffee experiences tailored for professionals and enthusiasts alike.</p>
-    <p><b>Address:</b> VENTURA BLVD, STE 130, ENCINO, CA 91436</p>
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title reveal">Why Choose Our Machine Café Shop?</h2>
+      <p class="muted reveal">Five pillars that define INSPIRE CAFE's offering.</p>
+      <div class="features-list">
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> High-performance professional espresso machines for consistent extraction.</div>
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> Energy-efficient hardware with eco modes to save cost and footprint.</div>
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> Fast brewing & steaming with smart temperature stability.</div>
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> Elegant modern design — blue & brown identity for premium vibes.</div>
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> Full service: installation, barista training, maintenance & parts.</div>
+      </div>
+    </div>
   </section>
 
-  <section class="features">
-    <h2>Why Choose Our Coffee Machines?</h2>
-    <ul>
-      <li>☕ High-Performance Professional Espresso Machines</li>
-      <li>🌍 Eco-Friendly and Energy Efficient</li>
-      <li>⚡ Fast Brewing Technology</li>
-      <li>🎨 Elegant & Modern Italian Design</li>
-      <li>🛠️ Reliable After-Sales Support & Maintenance</li>
-    </ul>
+  <!-- COMING SOON -->
+  <section id="coming" class="coming">
+    <div class="container" style="text-align:center">
+      <span class="badge">🚀 Coming Soon</span>
+      <h3 class="reveal">E-commerce, bundles & subscription plans</h3>
+      <p class="reveal">We’re preparing curated machine packages, service contracts, and fast shipping options.</p>
+      <div class="marquee" aria-hidden="true">
+        <span>Espresso Bundles</span>
+        <span>Office Solutions</span>
+        <span>Barista Training</span>
+        <span>Maintenance Plans</span>
+        <span>Filter Brewers</span>
+        <span>Grinders</span>
+        <span>Water Filtration</span>
+      </div>
+    </div>
   </section>
 
-  <section class="coming">
-    <h2>Coming Soon</h2>
-    <p>Our full e-commerce website is launching soon with a complete product range.  
-    Stay connected to discover the future of café innovation!</p>
-  </section>
-
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <p><b>Email:</b> <a href="mailto:contact@inspirell.shop">contact@inspirell.shop</a></p>
-    <p><b>Phone:</b> 13516661594</p>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="4" placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <!-- CONTACT -->
+  <section id="contact" class="container">
+    <h2 class="section-title reveal">Contact</h2>
+    <div class="contact-grid" style="margin-top:12px">
+      <div class="card reveal">
+        <ul class="list">
+          <li><strong>Company:</strong> INSPIRE CAFE, LLC</li>
+          <li><strong>Email:</strong> <a href="mailto:contact@inspirell.shop">contact@inspirell.shop</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+13516661594">+1 351 666 1594</a></li>
+          <li><strong>Address:</strong> VENTURA BLVD, STE 130, ENCINO, CA 91436</li>
+        </ul>
+        <button class="btn-send" onclick="window.location.href='mailto:contact@inspirell.shop'">Send Email</button>
+      </div>
+      <div class="card reveal">
+        <iframe
+          src="https://www.google.com/maps?q=VENTURA+BLVD,+STE+130,+ENCINO+91436&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to INSPIRE CAFE, LLC">
+        </iframe>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 INSPIRE CAFE, LLC – All Rights Reserved.</p>
-    <div class="social-icons">
-      <a href="#">🌐</a>
-      <a href="#">📘</a>
-      <a href="#">📸</a>
+    <div class="container">
+      <div class="chip">Machines Caffé</div>
+      <p style="margin:10px 0 0">© <span id="year"></span> INSPIRE CAFE, LLC — All rights reserved.</p>
+      <div class="social" aria-label="Social links">
+        <a class="chip" href="#gallery">Gallery</a>
+        <a class="chip" href="#features">Features</a>
+        <a class="chip" href="#contact">Get in touch</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+      })
+    }, {threshold:.15});
+    document.querySelectorAll('.reveal, .feature').forEach(el=>io.observe(el));
+  </script>
 </body>
 </html>
