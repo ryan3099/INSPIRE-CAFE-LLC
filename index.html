@@ -1,67 +1,97 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAP Garland, LLC</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INSPIRE CAFE, LLC</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      background-color: #fdfdfd;
       color: #333;
     }
     header {
-      background-color: #003366;
+      background: linear-gradient(90deg, #1e3c72, #2a5298); /* blue */
       color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+      border: 4px solid #8B5E3C; /* brown */
+    }
+    .info, .coming, .contact {
       padding: 30px 20px;
       text-align: center;
     }
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .info h2, .coming h2, .contact h2 {
+      color: #1e3c72;
+      margin-bottom: 15px;
     }
-    h1, h2 {
-      color: #003366;
-    }
-    .contact {
-      background: #fff;
-      padding: 20px;
-      border-left: 5px solid #003366;
-      margin-top: 30px;
+    .contact p {
+      margin: 5px 0;
+      font-size: 1.1em;
     }
     footer {
-      background-color: #003366;
+      background: #8B5E3C; /* brown */
       color: white;
       text-align: center;
       padding: 15px;
-      margin-top: 50px;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>CAP Garland, LLC</h1>
-    <p>Private Investment Fund</p>
+    <h1>INSPIRE CAFE, LLC</h1>
+    <p>Machines Caffé • ENCINO, CA</p>
   </header>
 
-  <section>
-    <h2>About Us</h2>
-    <p>CAP Garland, LLC is a Washington-based private investment fund focused on delivering value through diversified investment strategies.</p>
+  <section class="gallery">
+    <img src="https://i.ytimg.com/vi/SSYTZaIdM9o/maxresdefault.jpg" alt="Coffee shop">
+    <img src="https://www.lingoda.com/blog/wp-content/uploads/2024/04/coffee-in-italy-e1712840477267.jpg" alt="Coffee Italy">
+    <img src="https://cdn.mos.cms.futurecdn.net/kJrLQ2a9wgMX5jaTiUPefi.jpg" alt="Coffee beans">
+    <img src="https://www.coffeeitalia.co.uk/wp-content/uploads/2022/07/Rancilio-Classe-9-2.jpg" alt="Coffee machine">
+  </section>
 
-    <h2>Contact</h2>
-    <div class="contact">
-      <p><strong>Address:</strong> 915 W 2nd Ave, Spokane, WA 99201</p>
-      <p><strong>Email:</strong> <a href="mailto:ryanberg@capgarland.shop">ryanberg@capgarland.shop</a></p>
-      <p><strong>Phone:</strong> (509) 822-3850</p>
-    </div>
+  <section class="info">
+    <h2>About Us</h2>
+    <p><strong>INSPIRE CAFE, LLC</strong> is specialized in <b>Modern Coffee Machines</b>.  
+    We provide high-quality café solutions and coffee experiences.</p>
+    <p><b>Address:</b> VENTURA BLVD, STE 130, ENCINO, CA 91436</p>
+  </section>
+
+  <section class="coming">
+    <h2>Coming Soon</h2>
+    <p>Our full website and services will be available soon. Stay tuned for updates!</p>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p><b>Email:</b> <a href="mailto:contact@inspirell.shop">contact@inspirell.shop</a></p>
+    <p><b>Phone:</b> 13516661594</p>
   </section>
 
   <footer>
-    &copy; 2025 CAP Garland, LLC. All rights reserved.
+    &copy; 2025 INSPIRE CAFE, LLC – All Rights Reserved.
   </footer>
 </body>
 </html>
